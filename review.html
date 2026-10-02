@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave a Review</title>
+    <link rel="stylesheet" href="review.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Favicon.webp" />
+</head>
+
+<body>
+    <div class="logo-area">
+                <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Logo.webp" alt="Logo" class="brand-name" width="200px"
+                    onclick="window.location.href='index.html'">
+            </div>
+
+    <div class="review-container">
+
+        <h1>How was your experience?</h1>
+        <p class="subtitle">We'd love to hear your feedback.</p>
+
+        <!-- Star Rating -->
+        <div class="stars" id="stars">
+            <span data-rating="1">★</span>
+            <span data-rating="2">★</span>
+            <span data-rating="3">★</span>
+            <span data-rating="4">★</span>
+            <span data-rating="5">★</span>
+        </div>
+
+        <p class="rating-text" id="ratingText">Select a rating</p>
+
+        <!-- Review -->
+        <textarea
+            id="review"
+            placeholder="Write your review here..."
+            maxlength="500"
+        ></textarea>
+
+        <button id="submitBtn">Submit Review</button>
+
+        <p id="message"></p>
+
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+                    <a href='/return.html'>Return & Exchange Policy</a>
+                    <a href='/trackorder.html'>Track Order</a>
+                    <a href='/aboutus.html'>About Us</a>
+                    <a href='/contactus.html'>Contact Us</a>
+                    <a href='/refund.html'>Refund Policy</a>
+                    </div>
+                    <div class="security-footer">
+                        <p>© 2026 Rovena | Powered by rovena.online</p>
+                        <p>For any queries, contact us at +923148304327 or mail us at inkbliss54@gmail.com</p>
+                    </div>
+                </footer>
+    <script type="module" src="review.js"></script>
+
+</body>
+</html>

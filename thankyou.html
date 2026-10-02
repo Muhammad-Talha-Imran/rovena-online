@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for your purchase!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Favicon.webp">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --success: #27ae60;
+            --bg: #f8f9fa;
+            --border: #e1e4e8;
+            --text-muted: #6c757d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        /* Header Section */
+        .success-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .check-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+            font-weight: bolder;
+        }
+
+        /* Grid Layout */
+        .order-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        h2 { font-size: 1.2rem; margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+        /* Product Row */
+        .product-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .product-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .product-info { flex-grow: 1; }
+        .product-name { font-weight: 600; font-size: 0.95rem; }
+        .product-qty { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Summary Calculations */
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .total-line {
+            border-top: 2px solid var(--border);
+            margin-top: 15px;
+            padding-top: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .info-block { margin-bottom: 20px; }
+        .info-label { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .info-value { font-weight: 400; }
+
+        .btn-return {
+            display: block;
+            text-align: center;
+            background: rgb(20,20,20);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+.security-footer {
+    margin-top: 2.5rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.security-footer p {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #9aa0a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+        .btn-return:hover { opacity: 0.9; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .order-grid { grid-template-columns: 1fr; }
+            .container { margin: 10px auto; }
+        }
+    </style>
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '647447641725985');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+ <script>
+    fbq('track', 'Purchase', {
+      value: Number(localStorage.getItem('productSubtotal')),
+      currency: 'PKR'
+    });
+ </script>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="success-header">
+        <div class="check-icon">✓</div>
+        <p id="order-confirm-text">Order #25466437</p>
+        <h1>Thank you, <span id="user-name"></span>!</h1>
+        <p style="color: var(--text-muted)">Your order is confirmed and will be shipped soon, A confirmation email will be sent to you shortly.</p>
+    </div>
+
+    <div class="order-grid">
+        <div class="card">
+            <h2>Order Details</h2>
+            <div class="info-block">
+                <div class="info-label" id="shipping-address">Shipping Address</div>
+                <div class="info-value" id="shipping-display">Loading address...</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">Contact Method</div>
+                <div class="info-value" id="contact-display">Loading contact...</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">Payment Method</div>
+                <div class="info-value">Cash on Delivery (COD)</div>
+            </div>
+            <div class="info-block">
+                <div class="info-label">Estimated Delivery</div>
+                <div class="info-value" id="delivery-date"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Order Summary</h2>
+            
+            <div class="product-row">
+                <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937803/p-1.webp" alt="Product Image" class="product-img">
+                <div class="product-info">
+                    <div class="product-name">Refrigerator Lock for Child Safety</div>
+                    <div class="product-qty">Qty: 1</div>
+                </div>
+                <div class="product-price">Rs 999</div>
+            </div>
+
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="subtotal">Rs. 999/-</span>
+            </div>
+            <div class="summary-line">
+                <span>Shipping</span>
+                <span style="color:var(--text-muted);" id="free">FREE</span>
+            </div>
+            <div class="summary-line total-line">
+                <span>Total</span>
+                <span id="total">Rs. 850/-</span>
+            </div>
+
+            <a class='btn-return' href='/'>Continue Shopping</a>
+        </div>
+    </div>
+      <div class="security-footer">
+                <p>© 2026 Rovena | Powered by rovena.online</p>
+            </div>
+</div>
+
+<script>
+     const mainFunc = () => {
+    // 1. Check if the order data exists
+    const orderData = localStorage.getItem('InkBlissProductOrderData');
+    let ObjOrderData = JSON.parse(orderData)    
+    console.log(ObjOrderData);
+    
+    if (!orderData) {
+        // 2. If nothing is found, send them back to the checkout or home page
+        window.location.href = 'index.html'; 
+        return; // Stop the rest of the script from running
+    }
+
+    // ... rest of your code to display data ...
+    const today = new Date();
+
+    // 1. Calculate Start Date (+3 days) and End Date (+5 days)
+    const startDate = new Date();
+    startDate.setDate(today.getDate() + 5);
+
+    const endDate = new Date();
+    endDate.setDate(today.getDate() + 7);
+
+    // 2. Format options: "14 April 2026"
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    
+    // 'en-GB' gives us the [Day Month Year] format you asked for
+    const startFormatted = startDate.toLocaleDateString('en-GB', options);
+    const endFormatted = endDate.toLocaleDateString('en-GB', options);
+    document.getElementById('delivery-date').textContent = `${startFormatted} -- ${endFormatted}`;
+
+    document.getElementById("order-confirm-text").innerText = "Order #"+ObjOrderData.shipping.orderNumber;
+    document.getElementById("user-name").innerText = ObjOrderData.shipping.firstName;
+    document.getElementById("shipping-display").innerText = ObjOrderData.shipping.address;
+    document.getElementById("contact-display").innerText = ObjOrderData.contact || ObjOrderData.shipping.phone || "Not Provided";
+    document.getElementById("free").innerText = "FREE";
+    document.querySelector(".product-qty").innerText = "Qty: "+localStorage.getItem("productQuantity");
+
+    document.getElementById("subtotal").innerText ="Rs "+Number(ObjOrderData.orderSummary.orderTotal).toLocaleString()+"/-";
+    document.getElementById("total").innerText ="Rs "+Number(ObjOrderData.orderSummary.orderTotal).toLocaleString()+"/-";
+
+    // Fire Meta Pixel Purchase event AFTER order data is loaded
+    // const orderTotal = parseInt(ObjOrderData.orderSummary.orderTotal.replace(/,/g, ''));
+    // fbq('track', 'Purchase', {
+    //   value: orderTotal,
+    //   currency: 'PKR'
+    // });
+
+};
+    mainFunc();
+
+</script>
+
+</body>
+</html>

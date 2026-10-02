@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Rovena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="checkout.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Favicon.webp">
+
+    <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '647447641725985');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>
+fbq('track', 'InitiateCheckout', {
+  value: Number(localStorage.getItem('productSubtotal')) || 1750,
+  currency: 'PKR'
+});
+</script>
+</head>
+
+<body>
+ <!-- Announcement Bar -->
+        <div class="announcement-bar">
+            <div class="announcement-track">
+                <div class="announcement-item active">🔒 Secure Checkout</div>
+                <div class="announcement-item">🛡️ We respect your privacy</div>
+                <div class="announcement-item">🚫 No spam ever!</div>
+                <div class="announcement-item">📞 Customer Support Available</div>
+                <div class="announcement-item">💵 Cash on Delivery Available</div>
+            </div>
+        </div> <!-- End of Announcement Bar -->
+    <div class="container">
+        
+        <header>
+            <div class="logo-area">
+                <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Logo.webp" alt="Logo" class="brand-name" width="200px"
+                    onclick="window.location.href='index.html'">
+            </div>
+        </header>
+
+        <div class="checkout-main">
+            <div class="order-summary">
+                <h2 style="margin-bottom: 24px;">Order Summary <i class="fa-solid fa-chevron-down"
+                        style="font-size: smaller; margin-left: 5px;"></i></h2>
+                <div id="prices">
+                    <h4 style="margin-top: 23px;"></h4>
+                </div>
+            </div>
+            <div class="summary-content" id="summaryContent">
+                <div class="item">
+                    <div class="item-img"><img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937803/p-1.webp" alt="" width="60">
+                        <div class="item-qty"></div>
+                    </div>
+                    <div class="item-info">Refrigerator Lock for Child Safety <br>
+                        <div class="item-price" style="margin-top: 8px; color:#555">Rs 999/-</div>
+                    </div>
+
+                </div>
+                <div class="discount-row">
+                    <input type="text" placeholder="Discount code" id="discountCode">
+                    <button id="apply">Apply</button>
+                </div>
+
+                <div class="totals-row">
+
+                    <span>Subtotal • 10 items</span>
+                    <span id="subtotalPrice"></span>
+                </div>
+                <div class="totals-row">
+                    <span>Shipping</span>
+                    <span id='shipping' style="text-decoration: none;" class="shipping"></span>
+                </div>
+                <div class="totals-row" id="discount" style="display: none;">
+                    <span>Discount</span>
+                    <span id="subtotalPrice">-Rs 100/-</span>
+                </div>
+                <div class="totals-row total-final">
+                    <span>Total</span>
+                    <span id="totalSpan"><small style="font-weight: normal; font-size: 12px; color: #777;">PKR</small>
+                    </span>
+                </div>
+                <div style="font-size: 13px; color: #555;" id="saving"></div>
+                <hr style="width: 100%; background-color: #555; opacity: 0.3; margin-top:16px;">
+            </div>
+
+            <div class="form-container">
+                <h2>Contact</h2>
+                <div class="input-group">
+                    <input type="text" placeholder="Email or phone number (optional)">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox"> Email me with news and offers
+                </div>
+
+                <h2>Delivery</h2>
+                <div class="input-group">
+                    <select>
+                        <option>Pakistan</option>
+                    </select>
+                </div>
+                <div class="grid-2">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="input-group" style="margin-top:12px;">
+                    <input type="text" placeholder="Address">
+                </div>
+                <div class="input-group">
+                    <input type="text" placeholder="Apartment, suite, etc. (optional)">
+                </div>
+                <div class="grid-2">
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="Postal code (optional)">
+                    <input type="tel" placeholder="Phone">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox"> Save this information for next time
+                </div>
+
+                <h2>Shipping method</h2>
+                <div class="method-box selected">
+                    <span>Standard</span>
+                    <span id="shippingMethod">FREE</span>
+                </div>
+
+                <h2>Payment</h2>
+                <p style="font-size: 12px; color: #777;">All transactions are secure and encrypted.</p>
+                <div class="method-box selected"
+                    style="margin-bottom: 0; border-bottom: none; border-radius: 5px 5px 0 0;">
+                    <label><input type="radio" checked> Cash on Delivery (COD)</label>
+                </div>
+
+
+                <h2>Billing address</h2>
+                <div style="border: 1px solid var(--border-color); border-radius: 5px;">
+                    <div class="method-box"
+                        style="border: none; margin-bottom: 0; border-bottom: 1px solid var(--border-color);">
+                        <label><input type="radio" name="billing" checked onclick="toggleBilling(false)"> Same as
+                            shipping address</label>
+                    </div>
+                    <div class="method-box" style="border: none; margin-bottom: 0;">
+                        <label><input type="radio" name="billing" onclick="toggleBilling(true)"> Use a different billing
+                            address</label>
+                    </div>
+                </div>
+                
+
+                <button class="complete-btn">Complete order</button>
+
+                <footer>
+                    <a href='/return.html'>Return & Exchange Policy</a>
+                    <a href='/trackorder.html'>Track Order</a>
+                    <a href='/aboutus.html'>About Us</a>
+                    <a href='/contactus.html'>Contact Us</a>
+                    <a href='/refund.html'>Refund Policy</a>
+                    <div class="security-footer">
+                        <p>© 2026 Rovena | Powered by rovena.online</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="overlay" id="overlay">
+   <div id="bundle-form">
+    <h1>We have a Special Offer!</h1>
+    <h3>Use Code: "BLISS100" and Get Rs 100 OFF</h3>
+    <h5>Offer is valid for this time only!</h5>
+    <button id="claim-btn">Claim Offer</button>
+    <button id="close-btn" onclick="closeForm()">X</button>
+   </div>
+   </div> -->
+    <script src="checkout.js" type="module"></script>
+    <!-- <script src="firebasecheckout.js" type="module"></script> -->
+     
+
+</body>
+
+</html>

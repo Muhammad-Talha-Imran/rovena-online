@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order | Rovena</title>
+<!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Favicon.webp">    <style>
+      /* 1. Global Reset & Variables */
+:root {
+    --brand-green: #84b05b;
+    --brand-green-hover: #6d9448;
+    --bg-cream: #f9f9e0;
+    --dark-slate: #1a2b2c;
+    --text-muted: #5f6368;
+    --white: #ffffff;
+    --error-red: #d93025;
+    --success-green: #188038;
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+    --transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: white;
+    color: var(--dark-slate);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 2. Navigation & Branding */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px 0px 20px;
+    background: transparent;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo .bliss {
+    color: var(--brand-green);
+}
+
+/* 3. Main Container Card */
+.track-container, .policy-container {
+    display: flex;
+    justify-content: center;
+    padding: 4rem 1rem;
+}
+
+.track-card, .policy-card {
+    background: var(--white);
+    width: 100%;
+    max-width: 480px;
+    padding: 3rem 2.5rem;
+    border-radius: 28px; /* Matches the organic theme */
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+}
+
+h1, h2 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* 4. Form Elements */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 14px;
+    font-size: 1rem;
+    transition: var(--transition-standard);
+    background-color: #fafafa;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--brand-green);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(132, 176, 91, 0.1);
+}
+
+/* 5. Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    background-color: rgb(20, 20, 20);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-standard);
+}
+
+.btn-primary:hover {
+    background-color: #8BC34A;
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* 6. Feedback Messages */
+.message-area {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: none; /* Controlled by JS */
+}
+
+.message-area.success {
+    display: block;
+    background-color: #edf7ed;
+    color: var(--success-green);
+    border: 1px solid rgba(24, 128, 56, 0.1);
+}
+
+.message-area.error {
+    display: block;
+    background-color: #fce8e6;
+    color: var(--error-red);
+    border: 1px solid rgba(217, 48, 37, 0.1);
+}
+
+/* 7. Security Footer */
+.security-footer {
+    margin-top: 2.5rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.security-footer p {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #9aa0a6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* 8. Mobile Responsiveness */
+@media (max-width: 480px) {
+    .track-card {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+    
+    .navbar {
+        padding: 0px 30px 0px 20px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Logo.webp" alt="Logo" class="logo" width="200px" onclick="window.location.href='index.html'">
+    </nav>
+
+    <main class="track-container">
+        <div class="track-card">
+            <h2>Track Your Order</h2>
+            <p>Enter your order number to receive a status update via email.</p>
+            
+            <div class="input-group">
+                <input type="text" id="orderNumber" placeholder="e.g. IB-99421" aria-label="Order Number">
+                <button id="trackBtn" class="btn-primary">Track Order</button>
+            </div>
+
+            <div id="messageArea" class="message-area"></div>
+
+            <div class="security-footer">
+                <p>© 2026 Rovena | Powered by rovena.online</p>
+            </div>
+        </div>
+    </main>
+    <!-- <script src="trackorder.js" type="module"></script> -->
+</body>
+</html>
