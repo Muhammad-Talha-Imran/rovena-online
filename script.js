@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentIndex = 0;
   const totalSlides = slides.length;
+  localStorage.removeItem('productSubtotalAfterDelivery')
 
   // Function to switch to a specific slide index
   function goToSlide(index) {
@@ -171,7 +172,7 @@ cartToggle.addEventListener('click', () => {
   fbq('track', 'AddToCart', {
     content_name: 'Refrigerator Lock',
     content_type: 'product',
-    value: Number(localStorage.getItem('productSubtotal')) || 999,
+    value: Number(localStorage.getItem('productSubtotal')) || 799,
     currency: 'PKR'
 });
   localStorage.setItem('AddToCartClicked', 'true');
@@ -224,9 +225,9 @@ const QUANTITY_KEY = 'productQuantity';
 const SUBTOTAL_KEY = 'productSubtotal';
 
 const BUNDLE_PRICES = {
-  1: 999,
-  2: 1750,
-  3: 2499
+  1: 799,
+  2: 1199,
+  3: 1999
 };
 
 function getBundlePrice(quantity) {
@@ -330,7 +331,7 @@ document.querySelector('.total-price').textContent =
     whatsappAnchor.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     localStorage.setItem('productQuantity', '2');
-    localStorage.setItem('productSubtotal', '1750');
+    localStorage.setItem('productSubtotal', '1199');
 
     
 

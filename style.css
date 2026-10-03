@@ -198,8 +198,8 @@ header {
 
 /* Thumbnails Grid */
 .gallery-thumbnails {
-  display: flex;
-  /* grid-template-columns: repeat(5, 1fr); */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-left: 10px;
   margin-right: 10px;

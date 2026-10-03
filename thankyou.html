@@ -215,12 +215,12 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
                     <div class="product-name">Refrigerator Lock for Child Safety</div>
                     <div class="product-qty">Qty: 1</div>
                 </div>
-                <div class="product-price">Rs 999</div>
+                <div class="product-price">Rs 799</div>
             </div>
 
             <div class="summary-line">
                 <span>Subtotal</span>
-                <span id="subtotal">Rs. 999/-</span>
+                <span id="subtotal">Rs. 799/-</span>
             </div>
             <div class="summary-line">
                 <span>Shipping</span>
@@ -274,12 +274,17 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
     document.getElementById("user-name").innerText = ObjOrderData.shipping.firstName;
     document.getElementById("shipping-display").innerText = ObjOrderData.shipping.address;
     document.getElementById("contact-display").innerText = ObjOrderData.contact || ObjOrderData.shipping.phone || "Not Provided";
+    if(localStorage.getItem('productQuantity') == 1)
+    document.getElementById("free").innerText = "200.00";
+    else
     document.getElementById("free").innerText = "FREE";
     document.querySelector(".product-qty").innerText = "Qty: "+localStorage.getItem("productQuantity");
 
     document.getElementById("subtotal").innerText ="Rs "+Number(ObjOrderData.orderSummary.orderTotal).toLocaleString()+"/-";
+    if(localStorage.getItem('productSubtotalAfterDelivery'))
+    document.getElementById("total").innerText ="Rs "+Number(localStorage.getItem('productSubtotalAfterDelivery')).toLocaleString()+"/-";
+    else
     document.getElementById("total").innerText ="Rs "+Number(ObjOrderData.orderSummary.orderTotal).toLocaleString()+"/-";
-
     // Fire Meta Pixel Purchase event AFTER order data is loaded
     // const orderTotal = parseInt(ObjOrderData.orderSummary.orderTotal.replace(/,/g, ''));
     // fbq('track', 'Purchase', {

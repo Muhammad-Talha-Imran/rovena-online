@@ -26,9 +26,19 @@ else {
         document.querySelector("#prices h4").innerText = "Rs " + Number(localStorage.getItem('productSubtotal') || 0).toLocaleString('en-US') + "/-";
         setTimeout(() => {
             document.getElementById('shipping').classList.remove('shipping');
+            let productQuantity = localStorage.getItem('productQuantity');
+        if(productQuantity == 1){
+            document.getElementById('shipping').innerHTML = `<span style="color: #777;">200.00</span>`;
+            localStorage.setItem ('productSubtotalAfterDelivery',Number(localStorage.getItem('productSubtotal'))+200)
+            document.getElementById("totalSpan").innerText = "Rs " + Number(localStorage.getItem('productSubtotalAfterDelivery') || 0).toLocaleString('en-US');
+            document.querySelector("#prices h4").innerText = "Rs " + Number(localStorage.getItem('productSubtotalAfterDelivery') || 0).toLocaleString('en-US') + "/-";
+        }
+        else
             document.getElementById('shipping').innerHTML = `<span style="color: #777;">FREE</span>`;
+            
         }, 3000);
         document.getElementById("totalSpan").innerText = "Rs " + Number(localStorage.getItem('productSubtotal') || 0).toLocaleString('en-US');
+        
     }
     orderSummaryCalculation();
 
@@ -228,6 +238,9 @@ const claimButton = document.getElementById("claim-btn");
 // --------------------------------
 
 function getSubtotal() {
+    if(localStorage.getItem('productQuantity') == 1){
+        return Number(localStorage.getItem("productSubtotalAfterDelivery") || 999);
+    }else
     return Number(localStorage.getItem("productSubtotal") || 0);
 }
 
@@ -237,6 +250,9 @@ function getSubtotal() {
 // --------------------------------
 
 function saveSubtotal(amount) {
+    if(localStorage.getItem('productQuantity') == 1){
+        localStorage.setItem("productSubtotalAfterDelivery", String(amount));
+    }else
     localStorage.setItem("productSubtotal", String(amount));
 }
 
@@ -500,6 +516,9 @@ if (announcementItems.length > 0) {
 //         }
 //     });
 // }
-if (localStorage.getItem('productSubtotal') == '999' || localStorage.getItem('productSubtotal') == '1750' || localStorage.getItem('productSubtotal') == '2499'){
+if (localStorage.getItem('productSubtotal') == '799' || localStorage.getItem('productSubtotal') == '1199' || localStorage.getItem('productSubtotal') == '1999'){
     document.getElementById('discount').style.display = 'none';
+}
+if(localStorage.getItem('productQuantity') == 1){
+    document.getElementById('shippingMethod').innerText = '200.00'
 }
