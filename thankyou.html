@@ -169,7 +169,7 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
  <script>
     fbq('track', 'Purchase', {
-      value: Number(localStorage.getItem('productSubtotal')),
+      value: Number(localStorage.getItem('productSubtotalAfterDelivery')) || Number(localStorage.getItem('productSubtotal')),
       currency: 'PKR'
     });
  </script>
