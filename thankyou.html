@@ -210,17 +210,17 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
             <h2>Order Summary</h2>
             
             <div class="product-row">
-                <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937803/p-1.webp" alt="Product Image" class="product-img">
+                <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1792319337/1.webp" alt="Product Image" class="product-img">
                 <div class="product-info">
-                    <div class="product-name">Refrigerator Lock for Child Safety</div>
+                    <div class="product-name">2 in 1 Oil Spray Bottle</div>
                     <div class="product-qty">Qty: 1</div>
                 </div>
-                <div class="product-price">Rs 799</div>
+                <div class="product-price">Rs 999</div>
             </div>
 
             <div class="summary-line">
                 <span>Subtotal</span>
-                <span id="subtotal">Rs. 799/-</span>
+                <span id="subtotal">Rs. 999/-</span>
             </div>
             <div class="summary-line">
                 <span>Shipping</span>
@@ -280,7 +280,7 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
     document.getElementById("free").innerText = "FREE";
     document.querySelector(".product-qty").innerText = "Qty: "+localStorage.getItem("productQuantity");
 
-    document.getElementById("subtotal").innerText ="Rs "+Number(ObjOrderData.orderSummary.orderTotal).toLocaleString()+"/-";
+    document.getElementById("subtotal").innerText ="Rs "+Number(localStorage.getItem("productSubtotal")).toLocaleString()+"/-";
     if(localStorage.getItem('productSubtotalAfterDelivery'))
     document.getElementById("total").innerText ="Rs "+Number(localStorage.getItem('productSubtotalAfterDelivery')).toLocaleString()+"/-";
     else

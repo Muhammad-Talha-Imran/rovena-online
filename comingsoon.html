@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f8f5" />
+  <title>Coming Soon | Rovena</title>
+  <style>
+    
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --page-bg: #ffff;
+  --card-bg: #ffffff;
+  --text: #252822;
+  --muted: #777b73;
+  --accent: #536348;
+  --accent-hover: #3f4e35;
+  --border: #e9eae4;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+.unavailable-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 20px;
+}
+
+/* Brand */
+.brand {
+  align-self: flex-start;
+  margin-left: max(0px, calc((100% - 1120px) / 2));
+  color: var(--text);
+  font-size: 29px;
+  font-weight: 750;
+  letter-spacing: -1.8px;
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+/* Main card */
+.unavailable-card {
+  width: 100%;
+  max-width: 530px;
+  margin: auto 0;
+  padding: 38px 42px 42px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 16px 55px rgba(37, 40, 34, 0.045);
+  text-align: center;
+}
+
+/* Illustration */
+.illustration {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 27px;
+}
+
+.illustration-circle {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f3f4ee;
+}
+
+.package-icon {
+  width: 115px;
+  height: 115px;
+}
+
+.decor {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+}
+
+.decor-one {
+  top: 17px;
+  left: calc(50% - 90px);
+  width: 9px;
+  height: 9px;
+  background: #d9b77e;
+}
+
+.decor-two {
+  right: calc(50% - 91px);
+  top: 46px;
+  width: 7px;
+  height: 7px;
+  background: #a9b79a;
+}
+
+.decor-three {
+  bottom: 6px;
+  left: calc(50% - 69px);
+  width: 6px;
+  height: 6px;
+  background: #d9b77e;
+}
+
+/* Status */
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 50px;
+  background: #f4f5f0;
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #8a9c79;
+}
+
+/* Heading and copy */
+.unavailable-card h1 {
+  max-width: 400px;
+  margin: 22px auto 13px;
+  font-size: clamp(27px, 4vw, 35px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.description {
+  max-width: 370px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Friendly information note */
+.info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 24px 0;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fcfcfa;
+  text-align: left;
+}
+
+.info-icon {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border: 1px solid #a6b19a;
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.info-note p {
+  color: #686d64;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Primary button */
+.back-button {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: black;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.back-button span {
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover span {
+  transform: translateX(3px);
+}
+
+.home-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-link:hover {
+  color: var(--text);
+}
+
+/* Footer */
+.page-footer {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 25px;
+  color: #85877f;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#logo img{
+    height: 90px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 600px) {
+  .unavailable-page {
+    padding: 22px 16px 16px;
+  }
+
+  .brand {
+    margin-left: 0;
+    font-size: 26px;
+  }
+
+  .unavailable-card {
+    max-width: 440px;
+    margin: 35px 0;
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .illustration-circle {
+    width: 125px;
+    height: 125px;
+  }
+
+  .package-icon {
+    width: 98px;
+    height: 98px;
+  }
+
+  .unavailable-card h1 {
+    font-size: 29px;
+    letter-spacing: -0.8px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .info-note {
+    margin: 22px 0;
+    padding: 13px;
+  }
+
+  .back-button {
+    min-height: 50px;
+    font-size: 12px;
+  }
+
+  .page-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    padding-top: 10px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <main class="unavailable-page">
+
+    <a href="/" class="brand" aria-label="Rovena home">
+      <div id="logo"><img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1790937802/Logo.webp" alt="logo"></div>
+    </a>
+
+    <section class="unavailable-card">
+
+      <div class="illustration">
+        <div class="illustration-circle">
+          <svg
+            class="package-icon"
+            viewBox="0 0 120 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect x="23" y="34" width="74" height="64"
+              rx="9" fill="#E7E9E0"/>
+
+            <path d="M23 45L60 64L97 45"
+              stroke="#7C8770" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round"/>
+
+            <path d="M60 64V98"
+              stroke="#7C8770" stroke-width="3"
+              stroke-linecap="round"/>
+
+            <path d="M23 34L60 15L97 34L60 53L23 34Z"
+              fill="#D5DCCB" stroke="#7C8770"
+              stroke-width="2.5" stroke-linejoin="round"/>
+
+            <path d="M60 15V53"
+              stroke="#7C8770" stroke-width="2.5"/>
+
+            <circle cx="91" cy="88" r="18"
+              fill="#F4E7CE"/>
+
+            <path d="M91 79V89"
+              stroke="#9A7440" stroke-width="3"
+              stroke-linecap="round"/>
+
+            <circle cx="91" cy="95" r="1.8"
+              fill="#9A7440"/>
+          </svg>
+        </div>
+
+        <span class="decor decor-one"></span>
+        <span class="decor decor-two"></span>
+        <span class="decor decor-three"></span>
+      </div>
+
+      <span class="status-label">
+        <span class="status-dot"></span>
+        TEMPORARILY UNAVAILABLE
+      </span>
+
+      <h1>This Item is Out of Stock.</h1>
+
+      <p class="description">
+        This product isn't available right now but will be available soon.
+      </p>
+
+      <div class="info-note">
+        <span class="info-icon" aria-hidden="true">i</span>
+        <p>
+          We're always working to bring you useful
+          products for your home.
+        </p>
+      </div>
+
+      <a href="./index.html"
+         class="back-button">
+        Explore Our Available Product
+        <span aria-hidden="true">→</span>
+      </a>
+
+    </section>
+
+    <footer class="page-footer">
+      <p>Thoughtful essentials for your home.</p>
+      <span>© 2026 Rovena. All rights reserved.</span>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -182,7 +182,7 @@ else {
                     },
                     billing: {},
                     orderSummary: {
-                        orderTotal: localStorage.getItem("productSubtotal"),
+                        orderTotal: localStorage.getItem("productSubtotal") == '999' ? localStorage.getItem("productSubtotalAfterDelivery") : localStorage.getItem("productSubtotal"),
                         quantity: localStorage.getItem("productQuantity") || 1,
                         color: localStorage.getItem("productColor") || "Gray"
                     }
@@ -516,7 +516,7 @@ if (announcementItems.length > 0) {
 //         }
 //     });
 // }
-if (localStorage.getItem('productSubtotal') == '799' || localStorage.getItem('productSubtotal') == '1199' || localStorage.getItem('productSubtotal') == '1999'){
+if (localStorage.getItem('productSubtotal') == '999' || localStorage.getItem('productSubtotal') == '1998' || localStorage.getItem('productSubtotal') == '2997'){
     document.getElementById('discount').style.display = 'none';
 }
 if(localStorage.getItem('productQuantity') == 1){
