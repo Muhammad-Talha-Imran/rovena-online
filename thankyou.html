@@ -275,7 +275,7 @@ src="https://www.facebook.com/tr?id=647447641725985&ev=PageView&noscript=1"
     document.getElementById("shipping-display").innerText = ObjOrderData.shipping.address;
     document.getElementById("contact-display").innerText = ObjOrderData.contact || ObjOrderData.shipping.phone || "Not Provided";
     if(localStorage.getItem('productQuantity') == 1)
-    document.getElementById("free").innerText = "200.00";
+    document.getElementById("free").innerText = "FREE";
     else
     document.getElementById("free").innerText = "FREE";
     document.querySelector(".product-qty").innerText = "Qty: "+localStorage.getItem("productQuantity");

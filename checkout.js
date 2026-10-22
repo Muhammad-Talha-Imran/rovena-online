@@ -28,8 +28,8 @@ else {
             document.getElementById('shipping').classList.remove('shipping');
             let productQuantity = localStorage.getItem('productQuantity');
         if(productQuantity == 1){
-            document.getElementById('shipping').innerHTML = `<span style="color: #777;">200.00</span>`;
-            localStorage.setItem ('productSubtotalAfterDelivery',Number(localStorage.getItem('productSubtotal'))+200)
+            document.getElementById('shipping').innerHTML = `<span style="color: #777;">FREE</span>`;
+            localStorage.setItem ('productSubtotalAfterDelivery',Number(localStorage.getItem('productSubtotal'))+0)
             document.getElementById("totalSpan").innerText = "Rs " + Number(localStorage.getItem('productSubtotalAfterDelivery') || 0).toLocaleString('en-US');
             document.querySelector("#prices h4").innerText = "Rs " + Number(localStorage.getItem('productSubtotalAfterDelivery') || 0).toLocaleString('en-US') + "/-";
         }
@@ -520,5 +520,5 @@ if (localStorage.getItem('productSubtotal') == '799' || localStorage.getItem('pr
     document.getElementById('discount').style.display = 'none';
 }
 if(localStorage.getItem('productQuantity') == 1){
-    document.getElementById('shippingMethod').innerText = '200.00'
+    document.getElementById('shippingMethod').innerText = 'FREE'
 }
