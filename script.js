@@ -170,9 +170,9 @@ function closeCart() {
 
 cartToggle.addEventListener('click', () => {
   fbq('track', 'AddToCart', {
-    content_name: '2 in 1 Oil Spray Bottle',
+    content_name: 'Refrigerator Lock',
     content_type: 'product',
-    value: Number(localStorage.getItem('productSubtotal')) || 999,
+    value: Number(localStorage.getItem('productSubtotal')) || 799,
     currency: 'PKR'
 });
   localStorage.setItem('AddToCartClicked', 'true');
@@ -225,9 +225,9 @@ const QUANTITY_KEY = 'productQuantity';
 const SUBTOTAL_KEY = 'productSubtotal';
 
 const BUNDLE_PRICES = {
-  1: 999,
-  2: 1998,
-  3: 2997
+  1: 799,
+  2: 1299,
+  3: 1999
 };
 
 function getBundlePrice(quantity) {
@@ -317,7 +317,7 @@ document.querySelector('.total-price').textContent =
   `Rs ${subtotal.toLocaleString('en-US')}`;
   // document.getElementById('selected-color').innerText = "Green";
   const phoneNumber = "923148304327"; // Replace with your phone number (include country code, no + or spaces)
-    const productName = "2 in 1 Oil Spray Bottle"; // Dynamic product title
+    const productName = "Refrigerator Lock"; // Dynamic product title
     const productPrice = "Rs 999"; // Dynamic product price
     
     // Construct pre-written message
@@ -331,7 +331,7 @@ document.querySelector('.total-price').textContent =
     whatsappAnchor.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     localStorage.setItem('productQuantity', '2');
-    localStorage.setItem('productSubtotal', '1998');
+    localStorage.setItem('productSubtotal', '1299');
 
     
 
