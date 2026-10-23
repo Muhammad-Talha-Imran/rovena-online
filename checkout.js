@@ -516,7 +516,7 @@ if (announcementItems.length > 0) {
 //         }
 //     });
 // }
-if (localStorage.getItem('productSubtotal') == '799' || localStorage.getItem('productSubtotal') == '1299' || localStorage.getItem('productSubtotal') == '1999'){
+if (localStorage.getItem('productSubtotal') == '999' || localStorage.getItem('productSubtotal') == '1199' || localStorage.getItem('productSubtotal') == '1999'){
     document.getElementById('discount').style.display = 'none';
 }
 if(localStorage.getItem('productQuantity') == 1){

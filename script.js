@@ -172,7 +172,7 @@ cartToggle.addEventListener('click', () => {
   fbq('track', 'AddToCart', {
     content_name: 'Refrigerator Lock',
     content_type: 'product',
-    value: Number(localStorage.getItem('productSubtotal')) || 799,
+    value: Number(localStorage.getItem('productSubtotal')) || 999,
     currency: 'PKR'
 });
   localStorage.setItem('AddToCartClicked', 'true');
@@ -225,8 +225,8 @@ const QUANTITY_KEY = 'productQuantity';
 const SUBTOTAL_KEY = 'productSubtotal';
 
 const BUNDLE_PRICES = {
-  1: 799,
-  2: 1299,
+  1: 999,
+  2: 1199,
   3: 1999
 };
 
@@ -331,7 +331,7 @@ document.querySelector('.total-price').textContent =
     whatsappAnchor.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     localStorage.setItem('productQuantity', '2');
-    localStorage.setItem('productSubtotal', '1299');
+    localStorage.setItem('productSubtotal', '1199');
 
     
 
