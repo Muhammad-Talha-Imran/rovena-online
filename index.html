@@ -156,7 +156,7 @@
                 <h1 class="product-title">Refrigerator Lock for Child Safety</h1>
 
                 <div class="product-pricing">
-                    <span class="current-price">Rs 999</span>
+                    <span class="current-price">Rs 799</span>
                     <span class="original-price">Rs 1,199</span>
                     <span class="discount-badge">Sale</span>
                 </div>
@@ -172,7 +172,7 @@
                     <h2 class="bundle-title">Select Quantity & Save</h2>
 
                     <div class="bundle-options">
-                        <label class="bundle-card" data-quantity="1" data-price="999">
+                        <label class="bundle-card" data-quantity="1" data-price="799">
                             <input type="radio" name="bundle_option" value="1" class="bundle-radio">
                             <div class="bundle-content">
                                 <div class="bundle-info">
@@ -180,18 +180,19 @@
                                     <span class="bundle-desc">Free Delivery</span>
                                 </div>
                                 <div class="bundle-pricing">
-                                    <span class="price">Rs 999</span>
+                                    <span class="price">Rs 799</span>
                                 </div>
                             </div>
                         </label>
 
                         <label class="bundle-card popular active" data-quantity="2" data-price="1199">
-                            <span class="badgee">Special Offer • Save 40%</span>
+                            <span class="badgee">Special Offer • Save 25%</span>
                             <input type="radio" name="bundle_option" value="2" class="bundle-radio" checked>
                             <div class="bundle-content">
                                 <div class="bundle-info">
                                     <span class="bundle-qty">2 Pieces</span>
-                                    <span class="bundle-desc">Free Delivery + (Rs 599.5 per piece) </span>
+                                    <span class="bundle-unit-price">Just Rs 599.5 per piece!</span>
+                                    <span class="bundle-desc">+ Free Delivery</span>
                                 </div>
                                 <div class="bundle-pricing">
                                     <span class="price">Rs 1,199</span>
@@ -318,6 +319,18 @@
                     .bundle-desc {
                         font-size: 0.8125rem;
                         color: #6b7280;
+                    }
+
+                    .bundle-unit-price {
+                        display: inline-block;
+                        width: fit-content;
+                        margin: 0.25rem 0;
+                        padding: 0.25rem 0.55rem;
+                        border-radius: 6px;
+                        background-color: #fff1c2;
+                        color: #7a3e00;
+                        font-size: 0.9375rem;
+                        font-weight: 800;
                     }
 
                     .bundle-pricing {
@@ -830,14 +843,15 @@
 <div class="image-viewer" id="imageViewer">
   <button class="viewer-close" id="viewerClose" aria-label="Close">&times;</button>
 
-  <button class="viewer-prev" id="viewerPrev" aria-label="Previous image">&#10094;</button>
+  <button class="viewer-prev" id="viewerPrev" aria-label="Previous media">&#10094;</button>
 
   <div class="viewer-image-wrap">
     <img id="viewerImage" src="" alt="Product image">
+    <video id="viewerVideo" controls autoplay playsinline></video>
     <span class="viewer-counter" id="viewerCounter"></span>
   </div>
 
-  <button class="viewer-next" id="viewerNext" aria-label="Next image">&#10095;</button>
+  <button class="viewer-next" id="viewerNext" aria-label="Next media">&#10095;</button>
 </div>
 
 
@@ -872,8 +886,8 @@
   }
 
   .gallery-grid {
-    display:flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -885,7 +899,7 @@
     border-radius: 6px;
     background: #f8f8f8;
     cursor: pointer;
-    width: 80px;
+    min-width: 0;
   }
 
   .gallery-item img {
@@ -898,6 +912,38 @@
 
   .gallery-item:hover img {
     transform: scale(1.03);
+  }
+
+  .gallery-item:focus-visible {
+    outline: 3px solid #1a2028;
+    outline-offset: 3px;
+  }
+
+  .video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 42px;
+    height: 42px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.62);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .video-play-icon::after {
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 13px solid #fff;
+    content: "";
+    transform: translate(-50%, -50%);
   }
 
 
@@ -928,7 +974,8 @@
     justify-content: center;
   }
 
-  #viewerImage {
+  #viewerImage,
+  #viewerVideo {
     display: block;
     max-width: 90vw;
     max-height: 85vh;
@@ -936,6 +983,10 @@
     height: auto;
     object-fit: contain;
     border-radius: 4px;
+  }
+
+  #viewerVideo {
+    display: none;
   }
 
   .viewer-close,
@@ -1043,7 +1094,8 @@
       font-size: 27px;
     }
 
-    #viewerImage {
+    #viewerImage,
+    #viewerVideo {
       max-width: 88vw;
       max-height: 78vh;
     }
@@ -1052,12 +1104,26 @@
 
 
 <script>
-  /* ---------- PRODUCT IMAGES ---------- */
+  /* ---------- PRODUCT MEDIA ---------- */
 
-  const images = [
-    "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM_2.webp",
-    "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM_1.webp",
-    "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM.webp",
+  const media = [
+    {
+      type: "image",
+      src: "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM_2.webp"
+    },
+    {
+      type: "image",
+      src: "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM_1.webp"
+    },
+    {
+      type: "image",
+      src: "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM.webp"
+    },
+    {
+      type: "video",
+      src: "https://res.cloudinary.com/zigd1a1e/video/upload/v1792924228/WhatsApp_Video_2026-10-25_at_3.16.59_PM.mp4",
+      thumbnail: "https://res.cloudinary.com/zigd1a1e/image/upload/v1790944999/WhatsApp_Image_2026-10-02_at_5.38.53_PM.webp"
+    }
   ];
 
 
@@ -1066,27 +1132,44 @@
   const galleryGrid = document.getElementById("galleryGrid");
   const imageViewer = document.getElementById("imageViewer");
   const viewerImage = document.getElementById("viewerImage");
+  const viewerVideo = document.getElementById("viewerVideo");
   const viewerCounter = document.getElementById("viewerCounter");
 
-  let currentImage = 0;
+  let currentMedia = 0;
 
 
-  images.forEach((image, index) => {
+  media.forEach((entry, index) => {
 
     const item = document.createElement("div");
-    item.className = "gallery-item";
+    item.className = "gallery-item" + (entry.type === "video" ? " video-item" : "");
+    item.setAttribute("role", "button");
+    item.setAttribute("tabindex", "0");
+    item.setAttribute("aria-label", entry.type === "video" ? "Play product video" : "View product image " + (index + 1));
 
     const img = document.createElement("img");
 
-    img.src = image;
-    img.alt = "Product image " + (index + 1);
+    img.src = entry.type === "video" ? entry.thumbnail : entry.src;
+    img.alt = entry.type === "video" ? "Product video thumbnail" : "Product image " + (index + 1);
     img.loading = "lazy";
 
     item.appendChild(img);
+    if (entry.type === "video") {
+      const playIcon = document.createElement("span");
+      playIcon.className = "video-play-icon";
+      playIcon.setAttribute("aria-hidden", "true");
+      item.appendChild(playIcon);
+    }
     galleryGrid.appendChild(item);
 
-    item.addEventListener("click", () => {
+    const activateItem = () => {
       openViewer(index);
+    };
+    item.addEventListener("click", activateItem);
+    item.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activateItem();
+      }
     });
 
   });
@@ -1095,11 +1178,8 @@
   /* ---------- OPEN VIEWER ---------- */
 
   function openViewer(index) {
-    currentImage = index;
-
-    viewerImage.src = images[currentImage];
-    viewerCounter.textContent =
-      (currentImage + 1) + " / " + images.length;
+    currentMedia = index;
+    updateViewer();
 
     imageViewer.classList.add("active");
 
@@ -1111,30 +1191,31 @@
 
   function closeViewer() {
     imageViewer.classList.remove("active");
+    viewerVideo.pause();
+    viewerVideo.removeAttribute("src");
+    viewerVideo.load();
     document.body.style.overflow = "";
   }
 
 
-  /* ---------- NEXT IMAGE ---------- */
+  /* ---------- NEXT MEDIA ---------- */
 
   function nextImage() {
-    currentImage++;
-
-    if (currentImage >= images.length) {
-      currentImage = 0;
+    currentMedia++;
+    if (currentMedia >= media.length) {
+      currentMedia = 0;
     }
 
     updateViewer();
   }
 
 
-  /* ---------- PREVIOUS IMAGE ---------- */
+  /* ---------- PREVIOUS MEDIA ---------- */
 
   function previousImage() {
-    currentImage--;
-
-    if (currentImage < 0) {
-      currentImage = images.length - 1;
+    currentMedia--;
+    if (currentMedia < 0) {
+      currentMedia = media.length - 1;
     }
 
     updateViewer();
@@ -1142,10 +1223,26 @@
 
 
   function updateViewer() {
-    viewerImage.src = images[currentImage];
+    const entry = media[currentMedia];
+    viewerVideo.pause();
+    viewerVideo.removeAttribute("src");
+    viewerVideo.load();
 
-    viewerCounter.textContent =
-      (currentImage + 1) + " / " + images.length;
+    if (entry.type === "video") {
+      viewerImage.style.display = "none";
+      viewerVideo.src = entry.src;
+      viewerVideo.style.display = "block";
+      viewerVideo.load();
+      viewerVideo.play().catch(() => {
+        viewerCounter.textContent = "Tap play to start · " + (currentMedia + 1) + " / " + media.length;
+      });
+    } else {
+      viewerVideo.style.display = "none";
+      viewerImage.src = entry.src;
+      viewerImage.style.display = "block";
+    }
+
+    viewerCounter.textContent = (currentMedia + 1) + " / " + media.length;
   }
 
 
@@ -1211,7 +1308,7 @@
                     <img src="https://res.cloudinary.com/zigd1a1e/image/upload/v1792643133/ChatGPT_Image_Oct_22_2026_09_21_55_AM.webp" alt="Product Image">
                     <div class="cart-item-details">
                         <h4>Refrigerator Lock for Child Safety</h4>
-                        <p class="cart-item-price">Rs 999</p>
+                        <p class="cart-item-price">Rs 799</p>
                         <p class="cart-item-price" id="cart-item-qty">Qty: 1</p>
                     </div>
                     <button class="cart-item-remove" onclick="removeCartItem(this)">&times;</button>
@@ -1221,7 +1318,7 @@
             <div class="cart-footer">
                 <div class="cart-total">
                     <span>Subtotal:</span>
-                    <span class="total-price">Rs 999</span>
+                    <span class="total-price">Rs 799</span>
                 </div>
                 <button class="checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
             </div>
@@ -1386,7 +1483,14 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+        <div class="mobile-buy-bar" aria-label="Quick checkout">
+            <div class="mobile-buy-summary" aria-live="polite">
+                <span class="mobile-buy-quantity" id="mobileBuyQuantity">2 Pieces</span>
+                <span class="mobile-buy-price" id="mobileBuyPrice">Rs 1,199</span>
+            </div>
+            <a class="mobile-buy-button" href="checkout.html">Buy now</a>
+        </div>
+        <script src="script.js"></script>
     <script type="module">
         import { doc, getDoc } from "./firebase.js";
         import { db } from "./firebase.js";

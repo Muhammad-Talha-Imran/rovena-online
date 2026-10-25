@@ -461,6 +461,72 @@ header {
   transform: scale(0.99);
 }
 
+.mobile-buy-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-buy-bar {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .mobile-buy-summary {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-buy-quantity {
+    color: #4b5563;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .mobile-buy-price {
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .mobile-buy-button {
+    display: inline-flex;
+    min-height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    border-radius: 24px;
+    background: #1a2028;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .mobile-buy-button:focus-visible {
+    outline: 3px solid #4cb050;
+    outline-offset: 3px;
+  }
+}
+
 #message {
   font-size: 0.875rem;
   color: #cb102c;

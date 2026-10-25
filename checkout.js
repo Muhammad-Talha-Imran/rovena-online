@@ -239,7 +239,7 @@ const claimButton = document.getElementById("claim-btn");
 
 function getSubtotal() {
     if(localStorage.getItem('productQuantity') == 1){
-        return Number(localStorage.getItem("productSubtotalAfterDelivery") || 999);
+        return Number(localStorage.getItem("productSubtotalAfterDelivery") || 799);
     }else
     return Number(localStorage.getItem("productSubtotal") || 0);
 }
@@ -516,7 +516,7 @@ if (announcementItems.length > 0) {
 //         }
 //     });
 // }
-if (localStorage.getItem('productSubtotal') == '999' || localStorage.getItem('productSubtotal') == '1199' || localStorage.getItem('productSubtotal') == '1999'){
+if (localStorage.getItem('productSubtotal') == '799' || localStorage.getItem('productSubtotal') == '1199' || localStorage.getItem('productSubtotal') == '1999'){
     document.getElementById('discount').style.display = 'none';
 }
 if(localStorage.getItem('productQuantity') == 1){

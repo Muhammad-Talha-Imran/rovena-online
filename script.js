@@ -172,7 +172,7 @@ cartToggle.addEventListener('click', () => {
   fbq('track', 'AddToCart', {
     content_name: 'Refrigerator Lock',
     content_type: 'product',
-    value: Number(localStorage.getItem('productSubtotal')) || 999,
+    value: Number(localStorage.getItem('productSubtotal')) || 799,
     currency: 'PKR'
 });
   localStorage.setItem('AddToCartClicked', 'true');
@@ -225,7 +225,7 @@ const QUANTITY_KEY = 'productQuantity';
 const SUBTOTAL_KEY = 'productSubtotal';
 
 const BUNDLE_PRICES = {
-  1: 999,
+  1: 799,
   2: 1199,
   3: 1999
 };
@@ -301,6 +301,21 @@ function updateSelectedBundle(quantity) {
       radio.checked = isSelected;
     }
   });
+
+  updateMobileBuyBar(quantity);
+}
+
+function updateMobileBuyBar(quantity) {
+  const quantityElement = document.getElementById('mobileBuyQuantity');
+  const priceElement = document.getElementById('mobileBuyPrice');
+  const price = getBundlePrice(quantity);
+
+  if (!quantityElement || !priceElement || !price) {
+    return;
+  }
+
+  quantityElement.textContent = `${quantity} ${quantity === 1 ? 'Piece' : 'Pieces'}`;
+  priceElement.textContent = `Rs ${price.toLocaleString('en-US')}`;
 }
 
 document.querySelectorAll('.bundle-card').forEach((card) => {
@@ -318,7 +333,7 @@ document.querySelector('.total-price').textContent =
   // document.getElementById('selected-color').innerText = "Green";
   const phoneNumber = "923148304327"; // Replace with your phone number (include country code, no + or spaces)
     const productName = "Refrigerator Lock"; // Dynamic product title
-    const productPrice = "Rs 999"; // Dynamic product price
+    const productPrice = "Rs 799"; // Dynamic product price
     
     // Construct pre-written message
     const rawMessage = `Hello! I have a question about ${productName} (${productPrice}). Can you please assist me?`;
@@ -332,6 +347,6 @@ document.querySelector('.total-price').textContent =
 
     localStorage.setItem('productQuantity', '2');
     localStorage.setItem('productSubtotal', '1199');
+    updateMobileBuyBar(2);
 
     
-
